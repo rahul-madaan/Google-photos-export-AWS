@@ -64,3 +64,11 @@ print("Json files which are not used: \n", missing)
 # write a code to rename json files which have '(1)' in .json file name
 
 print(len('Screenshot_2021-11-04-17-28-16-732_com.whatsap'))
+
+# decide a uniform media name, based on timestamp, location name, persons, etc
+
+# process image with
+
+# make index of images based on faces
+
+# make index based on latitude longitude
