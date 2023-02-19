@@ -72,3 +72,5 @@ print(len('Screenshot_2021-11-04-17-28-16-732_com.whatsap'))
 # make index of images based on faces
 
 # make index based on latitude longitude
+
+# use asw recognition to put labels
