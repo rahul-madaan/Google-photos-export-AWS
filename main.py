@@ -26,7 +26,7 @@ all_metadata.extend([metadata[len(folder_path):] for metadata in json])
 
 all_files.extend([files[len(folder_path):] for files in Total])
 
-
+print(all_files)
 print("Total files: ", len(all_files))
 print("Total metadata files: ", len(all_metadata))
 print("Total media files: ", len(all_metadata))
@@ -37,7 +37,13 @@ for file in all_files:
     if file not in all_media and file not in all_metadata:
         missing.append(file)
 
-
 print(missing)
 
+missing = []
+
+for media in all_media:
+    if media + ".json" not in all_metadata:
+        missing.append(media)
+
+print("\nItems which do not have metadata file or metadata file is not named correctly: \n", missing)
 
