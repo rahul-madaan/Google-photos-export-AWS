@@ -1,4 +1,5 @@
 import glob
+import os
 from pathlib import Path
 
 folder_path = '/Users/rahul.madan/Downloads/Takeout/Google Photos/Nov 2021/'
@@ -63,8 +64,6 @@ print("Json files which are not used: \n", missing)
 
 # write a code to rename json files which have '(1)' in .json file name
 
-print(len('Screenshot_2021-11-04-17-28-16-732_com.whatsap'))
-
 # decide a uniform media name, based on timestamp, location name, persons, etc
 
 # process image with
@@ -73,4 +72,4 @@ print(len('Screenshot_2021-11-04-17-28-16-732_com.whatsap'))
 
 # make index based on latitude longitude
 
-# use asw recognition to put labels
+# use aws recognition to put labels
