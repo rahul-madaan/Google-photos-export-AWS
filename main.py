@@ -3,14 +3,14 @@ import os
 from pathlib import Path
 
 folder_path = '/Users/rahul.madan/Downloads/Takeout/Google Photos/Nov 2021/'
-total = glob.glob(folder_path+'*')
-json = glob.glob(folder_path+'*.json')
-mp3 = glob.glob(folder_path+'*.mp4')
-jpg = glob.glob(folder_path+'*.jpg')
-JPG = glob.glob(folder_path+'*.JPG')
-jpeg = glob.glob(folder_path+'*.jpeg')
-HEIC = glob.glob(folder_path+'*.HEIC')
-mov = glob.glob(folder_path+'*.mov')
+total = glob.glob(folder_path + '*')
+json = glob.glob(folder_path + '*.json')
+mp3 = glob.glob(folder_path + '*.mp4')
+jpg = glob.glob(folder_path + '*.jpg')
+JPG = glob.glob(folder_path + '*.JPG')
+jpeg = glob.glob(folder_path + '*.jpeg')
+HEIC = glob.glob(folder_path + '*.HEIC')
+mov = glob.glob(folder_path + '*.mov')
 
 all_files = []
 all_media = []
@@ -24,6 +24,7 @@ all_media.extend([image[len(folder_path):] for image in HEIC])
 all_media.extend([image[len(folder_path):] for image in mov])
 
 all_metadata.extend([metadata[len(folder_path):] for metadata in json])
+all_metadata.remove("metadata.json")
 
 all_files.extend([files[len(folder_path):] for files in total])
 
@@ -59,6 +60,17 @@ print(len(missing))
 print("Json files which are not used: \n", missing)
 
 # write a code to detect image names which have name longer than 46 characters (excluding extension .mp3, .jpeg) and rename their json files
+
+for media in all_media:
+    if len(media) > 46:
+        extension = media.split(".")[-1]
+        try:
+            os.rename(folder_path + media[:46] + ".json", folder_path + media + ".json")
+        except FileNotFoundError:
+            pass
+
+
+
 
 # write a code to make duplicate .json file if 'edited' present in media file name
 
