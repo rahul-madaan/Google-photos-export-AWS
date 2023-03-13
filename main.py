@@ -71,6 +71,29 @@ for media in all_media:
             pass
 
 
+#updating lists
+
+missing_media = []
+
+for media in all_media:
+    if media + ".json" not in all_metadata:
+        missing_media.append(media)
+
+print()
+print(len(missing_media))
+print("media which do not have metadata file or metadata file is not named correctly: \n", missing_media)
+
+missing_metadata = []
+for metadata in all_metadata:
+    if Path(metadata).stem not in all_media:
+        missing_metadata.append(metadata)
+
+print(len(missing_metadata))
+print("Json files which are not used: \n", missing_metadata)
+
+# updating lists completed
+
+
 
 # write a code to make duplicate .json file if 'edited' present in media file name
 
@@ -79,8 +102,35 @@ for media in missing_media:
         extension = media.split(".")[-1]
         shutil.copy(folder_path+Path(media).stem[:len(Path(media).stem)-7]+"."+extension+".json",folder_path+media+".json")
 
+#updating lists
+
+missing_media = []
+
+for media in all_media:
+    if media + ".json" not in all_metadata:
+        missing_media.append(media)
+
+print()
+print(len(missing_media))
+print("media which do not have metadata file or metadata file is not named correctly: \n", missing_media)
+
+missing_metadata = []
+for metadata in all_metadata:
+    if Path(metadata).stem not in all_media:
+        missing_metadata.append(metadata)
+
+print(len(missing_metadata))
+print("Json files which are not used: \n", missing_metadata)
+
+# updating lists completed
+
+
 
 # write a code to rename json files which have '(1)' in .json file name
+
+for metadata in missing_metadata:
+    os.rename(folder_path+metadata,Path(Path(metadata).stem).stem)
+
 
 # decide a uniform media name, based on timestamp, location name, persons, etc
 
