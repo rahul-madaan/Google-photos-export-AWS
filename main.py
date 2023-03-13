@@ -1,6 +1,7 @@
 import glob
 import os
 from pathlib import Path
+import shutil
 
 folder_path = '/Users/rahul.madan/Downloads/Takeout/Google Photos/Nov 2021/'
 total = glob.glob(folder_path + '*')
@@ -38,26 +39,26 @@ missing = []
 for file in all_files:
     if file not in all_media and file not in all_metadata:
         missing.append(file)
-
+print("Check for any missed extension except metadat.json")
 print(missing)
 
-missing = []
+missing_media = []
 
 for media in all_media:
     if media + ".json" not in all_metadata:
-        missing.append(media)
+        missing_media.append(media)
 
 print()
-print(len(missing))
-print("media which do not have metadata file or metadata file is not named correctly: \n", missing)
+print(len(missing_media))
+print("media which do not have metadata file or metadata file is not named correctly: \n", missing_media)
 
-missing = []
+missing_metadata = []
 for metadata in all_metadata:
     if Path(metadata).stem not in all_media:
-        missing.append(metadata)
+        missing_metadata.append(metadata)
 
-print(len(missing))
-print("Json files which are not used: \n", missing)
+print(len(missing_metadata))
+print("Json files which are not used: \n", missing_metadata)
 
 # write a code to detect image names which have name longer than 46 characters (excluding extension .mp3, .jpeg) and rename their json files
 
@@ -71,8 +72,13 @@ for media in all_media:
 
 
 
-
 # write a code to make duplicate .json file if 'edited' present in media file name
+
+for media in missing_media:
+    if Path(media).stem.endswith("-edited"):
+        extension = media.split(".")[-1]
+        shutil.copy(folder_path+Path(media).stem[:len(Path(media).stem)-7]+"."+extension+".json",folder_path+media+".json")
+
 
 # write a code to rename json files which have '(1)' in .json file name
 
