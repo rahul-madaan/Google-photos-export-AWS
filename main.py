@@ -39,7 +39,7 @@ missing = []
 for file in all_files:
     if file not in all_media and file not in all_metadata:
         missing.append(file)
-print("Check for any missed extension except metadat.json")
+print("Check for any missed extension except metadata.json")
 print(missing)
 
 missing_media = []
@@ -129,7 +129,7 @@ print("Json files which are not used: \n", missing_metadata)
 # write a code to rename json files which have '(1)' in .json file name
 
 for metadata in missing_metadata:
-    os.rename(folder_path+metadata,Path(Path(metadata).stem).stem)
+    # os.rename(folder_path+metadata,Path(Path(metadata).stem).stem) update here
 
 
 # decide a uniform media name, based on timestamp, location name, persons, etc
