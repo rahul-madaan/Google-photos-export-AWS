@@ -128,7 +128,7 @@ print("Json files which are not used: \n", missing_metadata)
 
 # write a code to rename json files which have '(1)' in .json file name
 
-for metadata in missing_metadata:
+# for metadata in missing_metadata:
     # os.rename(folder_path+metadata,Path(Path(metadata).stem).stem) update here
 
 
